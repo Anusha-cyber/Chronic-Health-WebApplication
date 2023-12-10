@@ -24,14 +24,10 @@ public class ApiController {
         return appointmentService.getAllAppointments();
     }
      
-    
+    }
     @PostMapping("/{requestId}/approve")
     public void approveAppointmentRequest(@PathVariable String requestId) {
         appointmentRequestService.approveAppointmentRequest(requestId);
     }
-    @GetMapping("/{appointmentId}")
-    public Optional<Appointment> getAppointmentById(@PathVariable String appointmentId) {
-        return appointmentService.getAppointmentById(appointmentId);
-    }
-
+   
 }

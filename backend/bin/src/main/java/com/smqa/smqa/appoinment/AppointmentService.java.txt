@@ -1,0 +1,47 @@
+// EmergencyAppointmentController.java
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping("/api/emergency-appointments")
+public class EmergencyAppointmentController {
+    private final EmergencyAppointmentService appointmentService;
+
+    @Autowired
+    public EmergencyAppointmentController(EmergencyAppointmentService appointmentService) {
+        this.appointmentService = appointmentService;
+    }
+
+    @PostMapping
+    public ResponseEntity<EmergencyAppointment> makeEmergencyBooking(
+            @RequestBody EmergencyAppointment appointment) {
+        EmergencyAppointment savedAppointment = appointmentService.makeEmergencyBooking(appointment);
+        return new ResponseEntity<>(savedAppointment, HttpStatus.CREATED);
+    }
+    @PostMapping
+    public ResponseEntity<UserProfile> createUserProfile(
+            @RequestBody UserProfile userProfile) {
+        UserProfile savedUserProfile = userProfileService.createUserProfile(userProfile);
+        return new ResponseEntity<>(savedUserProfile, HttpStatus.CREATED);
+    }
+    @PostMapping
+    public ResponseEntity<UserProfile> viewUserProfile(
+            @RequestBody UserProfile userProfile) {
+        UserProfile savedUserProfile = userProfileService.viewUserProfile(userProfile);
+        return new ResponseEntity<>(savedUserProfile, HttpStatus.CREATED);
+    }
+
+    @PostMapping
+    public ResponseEntity<BloodGlucose> saveBloodGlucose(@RequestBody BloodGlucose bloodGlucose) {
+        BloodGlucose savedBloodGlucose = bloodGlucoseService.saveBloodGlucose(bloodGlucose);
+        return new ResponseEntity<>(savedBloodGlucose, HttpStatus.CREATED);
+    }
+    @PostMapping
+    public ResponseEntity<BloodPressure> saveBloodPressure(@RequestBody BloodPressure bloodPressure) {
+        BloodPressure savedBloodPressure = bloodPressureService.saveBloodPressure(bloodPressure);
+        return new ResponseEntity<>(savedBloodPressure, HttpStatus.CREATED);
+    }
+}
+
