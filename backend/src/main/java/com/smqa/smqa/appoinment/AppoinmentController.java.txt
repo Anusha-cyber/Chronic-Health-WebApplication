@@ -22,4 +22,8 @@ public class AppointmentController {
             .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + resource.getFilename() + "\"")
             .body(resource);
     }
+    @PutMapping("/{id}")
+    public MedicalRecord updateMedicalRecord(@PathVariable String id, @RequestBody MedicalRecord updatedMedicalRecord) {
+        return medicalRecordService.updateMedicalRecord(id, updatedMedicalRecord);
+    }
 }
