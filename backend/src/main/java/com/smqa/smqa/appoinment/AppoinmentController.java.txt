@@ -39,4 +39,14 @@ public class AppointmentController {
     public List<Notification> getAllNotifications() {
         return notificationService.getAllNotifications();
     }
+    @PostMapping("/send-message")
+    public void sendMessage(@RequestParam String senderId, @RequestParam String receiverId, @RequestParam String content) {
+        messageService.sendMessage(senderId, receiverId, content);
+    }
+
+    @GetMapping("/messages")
+    public List<Message> getMessages(@RequestParam String senderId, @RequestParam String receiverId) {
+        return messageService.getMessages(senderId, receiverId);
+    }
+}
 }
