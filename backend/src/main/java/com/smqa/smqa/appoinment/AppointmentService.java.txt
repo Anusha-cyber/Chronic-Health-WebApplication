@@ -1,0 +1,23 @@
+// EmergencyAppointmentController.java
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping("/api/emergency-appointments")
+public class EmergencyAppointmentController {
+    private final EmergencyAppointmentService appointmentService;
+
+    @Autowired
+    public EmergencyAppointmentController(EmergencyAppointmentService appointmentService) {
+        this.appointmentService = appointmentService;
+    }
+
+    @PostMapping
+    public ResponseEntity<EmergencyAppointment> makeEmergencyBooking(
+            @RequestBody EmergencyAppointment appointment) {
+        EmergencyAppointment savedAppointment = appointmentService.makeEmergencyBooking(appointment);
+        return new ResponseEntity<>(savedAppointment, HttpStatus.CREATED);
+    }
+}
