@@ -26,4 +26,10 @@ public class EmergencyAppointmentController {
         UserProfile savedUserProfile = userProfileService.createUserProfile(userProfile);
         return new ResponseEntity<>(savedUserProfile, HttpStatus.CREATED);
     }
+@PostMapping
+    public ResponseEntity<UserProfile> viewUserProfile(
+            @RequestBody UserProfile userProfile) {
+        UserProfile savedUserProfile = userProfileService.viewUserProfile(userProfile);
+        return new ResponseEntity<>(savedUserProfile, HttpStatus.CREATED);
+    }
 }
