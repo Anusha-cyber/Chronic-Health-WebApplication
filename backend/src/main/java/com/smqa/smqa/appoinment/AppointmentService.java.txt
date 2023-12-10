@@ -33,15 +33,10 @@ public class EmergencyAppointmentController {
         return new ResponseEntity<>(savedUserProfile, HttpStatus.CREATED);
     }
 
-    @GetMapping("/{userId}")
-    public ResponseEntity<List<BloodGlucose>> getBloodGlucoseDetails(@PathVariable Long userId) {
-        List<BloodGlucose> bloodGlucoseDetails = bloodGlucoseService.getBloodGlucoseDetails(userId);
-
-        if (!bloodGlucoseDetails.isEmpty()) {
-            return new ResponseEntity<>(bloodGlucoseDetails, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
+    @PostMapping
+    public ResponseEntity<BloodGlucose> saveBloodGlucose(@RequestBody BloodGlucose bloodGlucose) {
+        BloodGlucose savedBloodGlucose = bloodGlucoseService.saveBloodGlucose(bloodGlucose);
+        return new ResponseEntity<>(savedBloodGlucose, HttpStatus.CREATED);
     }
 }
 
