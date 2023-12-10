@@ -20,16 +20,28 @@ public class EmergencyAppointmentController {
         EmergencyAppointment savedAppointment = appointmentService.makeEmergencyBooking(appointment);
         return new ResponseEntity<>(savedAppointment, HttpStatus.CREATED);
     }
-@PostMapping
+    @PostMapping
     public ResponseEntity<UserProfile> createUserProfile(
             @RequestBody UserProfile userProfile) {
         UserProfile savedUserProfile = userProfileService.createUserProfile(userProfile);
         return new ResponseEntity<>(savedUserProfile, HttpStatus.CREATED);
     }
-@PostMapping
+    @PostMapping
     public ResponseEntity<UserProfile> viewUserProfile(
             @RequestBody UserProfile userProfile) {
         UserProfile savedUserProfile = userProfileService.viewUserProfile(userProfile);
         return new ResponseEntity<>(savedUserProfile, HttpStatus.CREATED);
     }
+
+    @GetMapping("/{userId}")
+    public ResponseEntity<List<BloodGlucose>> getBloodGlucoseDetails(@PathVariable Long userId) {
+        List<BloodGlucose> bloodGlucoseDetails = bloodGlucoseService.getBloodGlucoseDetails(userId);
+
+        if (!bloodGlucoseDetails.isEmpty()) {
+            return new ResponseEntity<>(bloodGlucoseDetails, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
 }
+
