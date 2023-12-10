@@ -26,4 +26,8 @@ public class AppointmentController {
     public MedicalRecord updateMedicalRecord(@PathVariable String id, @RequestBody MedicalRecord updatedMedicalRecord) {
         return medicalRecordService.updateMedicalRecord(id, updatedMedicalRecord);
     }
+    @GetMapping("/user/{userId}/medical-records")
+    public List<MedicalRecord> getUserMedicalRecords(@PathVariable String userId) {
+        return medicalRecordService.getUserMedicalRecords(userId);
+    }
 }
