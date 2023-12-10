@@ -38,5 +38,10 @@ public class EmergencyAppointmentController {
         BloodGlucose savedBloodGlucose = bloodGlucoseService.saveBloodGlucose(bloodGlucose);
         return new ResponseEntity<>(savedBloodGlucose, HttpStatus.CREATED);
     }
+    @PostMapping
+    public ResponseEntity<BloodPressure> saveBloodPressure(@RequestBody BloodPressure bloodPressure) {
+        BloodPressure savedBloodPressure = bloodPressureService.saveBloodPressure(bloodPressure);
+        return new ResponseEntity<>(savedBloodPressure, HttpStatus.CREATED);
+    }
 }
 
