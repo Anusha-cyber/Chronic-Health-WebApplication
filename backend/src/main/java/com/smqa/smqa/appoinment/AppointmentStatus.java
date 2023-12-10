@@ -34,5 +34,14 @@ public class YourEntityController {
     public Appointment createAppointment(@RequestBody Appointment appointment) {
         return appointmentService.createAppointment(appointment);
     }
+    @GetMapping
+    public List<MedicalRecord> getAllMedicalRecords() {
+        return medicalRecordService.getAllMedicalRecords();
+    }
+
+    @PostMapping
+    public MedicalRecord saveMedicalRecord(@RequestBody MedicalRecord medicalRecord) {
+        return medicalRecordService.saveMedicalRecord(medicalRecord);
+    }
 	
 }
