@@ -22,4 +22,9 @@ public class YourEntityController {
         List<Appointment> appointments = appointmentService.getAppointmentsForUser(userId);
         return new ResponseEntity<>(appointments, HttpStatus.OK);
     }
+    @PutMapping("/{id}/modify-date")
+    public void modifyAppointmentDate(@PathVariable String id, @RequestBody Date newDate) {
+        appointmentService.modifyAppointmentDate(id, newDate);
+    }
+	
 }
