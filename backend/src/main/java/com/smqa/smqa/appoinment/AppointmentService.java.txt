@@ -20,4 +20,10 @@ public class EmergencyAppointmentController {
         EmergencyAppointment savedAppointment = appointmentService.makeEmergencyBooking(appointment);
         return new ResponseEntity<>(savedAppointment, HttpStatus.CREATED);
     }
+@PostMapping
+    public ResponseEntity<UserProfile> createUserProfile(
+            @RequestBody UserProfile userProfile) {
+        UserProfile savedUserProfile = userProfileService.createUserProfile(userProfile);
+        return new ResponseEntity<>(savedUserProfile, HttpStatus.CREATED);
+    }
 }
