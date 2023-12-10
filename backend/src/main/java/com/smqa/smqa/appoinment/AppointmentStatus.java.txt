@@ -15,5 +15,11 @@ public class YourEntityController {
     @GetMapping("/all")
     public List<YourEntity> getAllRecords() {
         return service.getAllRecords();
+
+    }
+    @GetMapping("/user/{userId}")
+    public ResponseEntity<List<Appointment>> getAppointmentsForUser(@PathVariable String userId) {
+        List<Appointment> appointments = appointmentService.getAppointmentsForUser(userId);
+        return new ResponseEntity<>(appointments, HttpStatus.OK);
     }
 }
