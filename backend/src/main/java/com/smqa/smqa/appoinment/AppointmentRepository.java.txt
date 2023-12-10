@@ -19,5 +19,9 @@ public class ApiController {
     public List<MedicalHistory> getAllMedicalHistory() {
         return medicalHistoryService.getAllMedicalHistory();
     }
+@GetMapping
+    public List<Appointment> getAllAppointments() {
+        return appointmentService.getAllAppointments();
+    }
 
 }
