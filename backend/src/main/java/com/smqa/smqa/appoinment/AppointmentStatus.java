@@ -26,5 +26,13 @@ public class YourEntityController {
     public void modifyAppointmentDate(@PathVariable String id, @RequestBody Date newDate) {
         appointmentService.modifyAppointmentDate(id, newDate);
     }
+    @GetMapping("/{userId}")
+    public List<Appointment> getAppointmentsByUserId(@PathVariable String userId) {
+        return appointmentService.getAppointmentsByUserId(userId);
+    }
+    @PostMapping
+    public Appointment createAppointment(@RequestBody Appointment appointment) {
+        return appointmentService.createAppointment(appointment);
+    }
 	
 }
