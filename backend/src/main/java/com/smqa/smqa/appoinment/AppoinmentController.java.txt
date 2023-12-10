@@ -14,4 +14,12 @@ public class AppointmentController {
     public void cancelAppointment(@PathVariable String id) {
         appointmentService.cancelAppointment(id);
     }
+    @GetMapping("/download/{fileName}")
+    public ResponseEntity<Resource> downloadFile(@PathVariable String fileName) {
+        Resource resource = fileDownloadService.downloadFile(fileName);
+
+        return ResponseEntity.ok()
+            .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + resource.getFilename() + "\"")
+            .body(resource);
+    }
 }
