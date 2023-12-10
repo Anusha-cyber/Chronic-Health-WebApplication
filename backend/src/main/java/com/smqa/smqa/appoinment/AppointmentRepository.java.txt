@@ -15,4 +15,9 @@ public class ApiController {
     public void resetPassword(@RequestParam String username, @RequestParam String newPassword) {
         mongoService.resetPassword(username, newPassword);
     }
+    @GetMapping
+    public List<MedicalHistory> getAllMedicalHistory() {
+        return medicalHistoryService.getAllMedicalHistory();
+    }
+
 }
