@@ -67,6 +67,7 @@
 			<scope>test</scope>
 		</dependency>
 
+
 	</dependencies>
 
 	<build>
@@ -82,6 +83,43 @@
 						</exclude>
 					</excludes>
 				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.pitest</groupId>
+				<artifactId>pitest-maven</artifactId>
+				<version>1.14.2</version>
+				<configuration>
+					<targetClasses>
+						<param>com.smqa.smqa.appointments.AppointmentService</param>
+						<param>com.smqa.smqa.user.UserService</param>
+						<param>com.smqa.smqa.healthRecords.HealthRecordService</param>
+
+
+
+
+					</targetClasses>
+
+					<targetTests>
+						<param>com.smqa.smqa.user.UserServiceTest</param>
+						<param>com.smqa.smqa.healthRecords.HealthRecordServiceTest</param>
+						<param>com.smqa.smqa.appointments.AppointmentServiceTest</param>
+						<param>com.smqa.smqa.branching.BranchingTest</param>
+						<param>com.smqa.smqa.statementBased.StatementBasedTest</param>
+
+
+					</targetTests>
+					<mutators>
+
+						<mutator>NEGATE_CONDITIONALS</mutator>
+					</mutators>
+				</configuration>
+				<dependencies>
+				<dependency>
+					<groupId>org.pitest</groupId>
+					<artifactId>pitest-junit5-plugin</artifactId>
+					<version>1.2.0</version>
+				</dependency>
+				</dependencies>
 			</plugin>
 		</plugins>
 	</build>

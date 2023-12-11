@@ -27,6 +27,10 @@ public class HealthRecordUpdateRequest {
     @JsonProperty("feedback")
     private String feedback;
 
+    @JsonProperty("diabetic")
+    private String diabetic;
+    @JsonProperty("bp")
+    private String bp;
     @JsonProperty("recordsUrl")
     private String recordsUrl;
 
@@ -92,7 +96,31 @@ public class HealthRecordUpdateRequest {
         return recordsUrl;
     }
 
+    public void setPrescription(String prescription) {
+        this.prescription = prescription;
+    }
+
+    public void setDiabetic(String diabetic) {
+        this.diabetic = diabetic;
+    }
+
+    public void setBp(String bp) {
+        this.bp = bp;
+    }
+
     public void setRecordsUrl(String recordsUrl) {
         this.recordsUrl = recordsUrl;
+    }
+
+    public String getPrescription() {
+        return prescription;
+    }
+
+    public String getDiabetic() {
+        return diabetic;
+    }
+
+    public String getBp() {
+        return bp;
     }
 }
